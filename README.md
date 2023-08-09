@@ -4,7 +4,7 @@ some of my workflows still depend on `mpd` and `randomcoww/mpd` is no longer ava
 
 instead of chasing down a new `mpd`, I decided to fork it, modernize it, and self-maintain it (mostly let CICD run)
 
-pull via `ghcr.io` if you need it.
+pull via `ghcr.io` if you need it => `docker pull ghcr.io/dancemore/dancemore/docker-mpd`
 
 original readme below
 

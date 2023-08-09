@@ -73,7 +73,8 @@ RUN set -x \
       | awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
   )" \
   && apk add --virtual .mpd-rundeps $runDeps \
-  && adduser -DH mpd
+  && adduser -DH mpd \
+  && mkdir /mpd && chown mpd:mpd /mpd
 
 COPY mpd.conf /etc/mpd.conf
 COPY docker-entrypoint.sh /
