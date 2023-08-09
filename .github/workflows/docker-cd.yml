@@ -19,6 +19,13 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
+      - name: Set up environment variables
+        run: |
+          VERSION=0.23
+          PATCH=5
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "PATCH=$PATCH" >> $GITHUB_ENV
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
