@@ -1,7 +1,7 @@
-FROM alpine:edge
+FROM alpine:3.15
 
-ARG VERSION
-ARG PATCH
+ARG VERSION=0.23
+ARG PATCH=5
 
 RUN set -x \
   \
@@ -42,24 +42,29 @@ RUN set -x \
     zlib-dev \
     mpg123-dev \
     wavpack-dev \
-    ca-certificates \
-  \
+    ca-certificates
+
 ## build
+RUN set -x \
   && mkdir -p /usr/src/mpd \
   && cd /usr/src/mpd \
   && wget -O mpd.tar.xz https://www.musicpd.org/download/mpd/$VERSION/mpd-$VERSION.$PATCH.tar.xz \
   && tar xf mpd.tar.xz --strip-components=1 -C /usr/src/mpd \
-  && rm mpd.tar.xz \
-  \
+  && rm mpd.tar.xz
+
+WORKDIR /usr/src/mpd
+
+RUN set -x \
   && meson \
     --prefix=/usr/local \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --buildtype=plain \
     output \
-  && ninja -C output install \
-  \
+  && ninja -C output install
+
 ## cleanup
+RUN set -x \
   && rm -rf /usr/src \
   && runDeps="$( \
     scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
