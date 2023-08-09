@@ -1,7 +1,7 @@
 FROM alpine:3.15
 
 ARG VERSION=0.23
-ARG PATCH=5
+ARG PATCH=13
 
 RUN set -x \
   \
