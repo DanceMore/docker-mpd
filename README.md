@@ -1,3 +1,15 @@
+# docker-mpd
+
+some of my workflows still depend on `mpd` and `randomcoww/mpd` is no longer availible for pulling, causing warnings in my logs.
+
+instead of chasing down a new `mpd`, I decided to fork it, modernize it, and self-maintain it (mostly let CICD run)
+
+pull via `ghcr.io` if you need it.
+
+original readme below
+
+
+
 ### Docker MPD intended for HTTP streaming
 
 https://hub.docker.com/r/randomcoww/mpd/
